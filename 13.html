@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<canvas id="mycanvas" height="400px" width="400px" style="border: 1px gray solid;">
+			
+		</canvas>
+
+		<script>
+			var canvas=document.getElementById("mycanvas");
+			var ctx=canvas.getContext("2d");	
+			
+			ctx.height=1000;
+			ctx.width=1000;
+
+			var img1 =new Image();
+			img1.src="DMMban.png";
+			var ow=img1.width;
+			var oh=img1.height;
+			var i=0;
+			img1.onload=function (argument) {
+				setInterval(function () {
+					ctx.clearRect(0,0,40,70);
+					ctx.drawImage(img1,i*40,0,40,70,0,0,40,70);
+					if(i>=4){
+						i=0;
+					}else{
+						i++;
+					}
+				},1000/10)
+			}
+						
+			
+			
+			
+
+		</script>
+	</body>
+</body>
+</html>
