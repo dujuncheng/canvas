@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<canvas id="mycanvas" height="400px" width="400px" style="border: 1px gray solid;">
+			
+		</canvas>
+
+		<script>
+
+			var data=[{
+				name:"zhangsan",
+				value:0.2,
+				color:"red"
+			},{
+				name:"lisi",
+				value:0.3,
+				color:"green"
+			},{
+				name:"wangwu",
+				value:0.3,
+				color:"gray"
+			},{
+				name:"chenliu",
+				value:0.2,
+				color:"#4D1B1B"
+			}]
+			var canvas=document.getElementById("mycanvas");
+			var ctx=canvas.getContext("2d");	
+			
+			ctx.height=400;
+			ctx.width=400;
+			ctx.lineWidth=.5;
+
+			
+			
+			var temphu=-90*Math.PI/180;
+			for(var i=0;i<data.length;i++){
+				ctx.beginPath();
+				ctx.moveTo(200,200);
+				var datadu=data[i].value*360;
+				var datahu=datadu*Math.PI/180;
+				ctx.arc(200,200,100,temphu,temphu+datahu);
+				ctx.fillStyle=data[i].color;
+				ctx.fill();
+				temphu=temphu+datahu;
+			}
+			
+		</script>
+	</body>
+</body>
+</html>

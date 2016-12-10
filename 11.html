@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<canvas id="mycanvas" height="400px" width="400px" style="border: 1px gray solid;">
+			
+		</canvas>
+
+		<script>
+
+			var data=[{
+				name:"zhangsan",
+				value:0.2,
+				color:"red"
+			},{
+				name:"lisi",
+				value:0.3,
+				color:"green"
+			},{
+				name:"wangwu",
+				value:0.3,
+				color:"gray"
+			},{
+				name:"chenliu",
+				value:0.2,
+				color:"#4D1B1B"
+			}]
+			var canvas=document.getElementById("mycanvas");
+			var ctx=canvas.getContext("2d");	
+			
+			ctx.height=400;
+			ctx.width=400;
+			ctx.lineWidth=.5;
+
+			
+			
+			var temphu=-90*Math.PI/180;
+			for(var i=0;i<data.length;i++){
+				var x0=200;
+				var y0=200;
+				var r=100;
+				ctx.beginPath();
+				ctx.moveTo(x0,y0);
+				var datadu=data[i].value*360;
+				var datahu=datadu*Math.PI/180;
+				ctx.arc(x0,y0,r,temphu,temphu+datahu);
+				ctx.fillStyle=data[i].color;
+				ctx.fill();
+
+				var midhu=temphu+datahu/2;
+				var h=(r+20)*Math.sin(midhu);
+				var w=(r+20)*Math.cos(midhu);
+
+				var tx=x0+w;
+				var ty=y0+h;
+				ctx.fillText(data[i].name,tx,ty);
+				if(midhu/Math.PI*180>90&&midhu/Math.PI*180<270){
+					ctx.textAlign="end";
+				}
+				console.log(midhu/Math.PI*180>90&&midhu/Math.PI*180<270);
+				temphu=temphu+datahu;
+			}
+			
+		</script>
+	</body>
+</body>
+</html>
