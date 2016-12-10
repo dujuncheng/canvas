@@ -1,0 +1,46 @@
+
+
+<!-- 实现隔行换色 -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+		<canvas id="mycanvas" height="400px" width="400px" style="border: 1px gray solid;">
+			
+		</canvas>
+
+		<script>
+			var canvas=document.getElementById("mycanvas");
+			var ctx=canvas.getContext("2d");	
+			
+			ctx.height=400;
+			ctx.width=400;
+			ctx.lineWidth=.5;
+
+			var rectX=10;
+			var rectY=10;
+			for(var i=0;i<10;i++){
+				if(i%2===0){
+					ctx.beginPath();
+					ctx.moveTo(0,i*rectX);
+					ctx.lineTo(ctx.width,i*rectX);
+					ctx.strokeStyle="#FF0A0A";
+				}else {
+					ctx.beginPath();
+					ctx.moveTo(0,i*rectX);
+					ctx.lineTo(ctx.width,i*rectX);
+					ctx.strokeStyle="#28FCA8";
+				}
+					ctx.stroke();
+			};
+
+		</script>
+	</body>
+</body>
+</html>
